@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Квест — Задание 1</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #111; color: #eee; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: #222; padding: 20px; border-radius: 10px; }
+    h1 { color: #f39c12; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; background: #f39c12; border: none; border-radius: 5px; color: #111; }
+    button:hover { background: #d35400; }
+    .result { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Задание 1: Что осталось у Юлика?</h1>
+    <p>У Юлика было:<br>
+      - 2 пачки сиг<br>
+      - 3 друга<br>
+      - 1 микрофон<br><br>
+      Сиги кончились, микрофон украли, один друг переехал к девушке.<br>
+      <strong>Что у него осталось?</strong>
+    </p>
+    <form id="quizForm">
+      <label><input type="radio" name="answer" value="a"> 1 пачка сиг</label><br>
+      <label><input type="radio" name="answer" value="b"> 2 друга</label><br>
+      <label><input type="radio" name="answer" value="c"> микрофон (но без шнура)</label><br>
+      <label><input type="radio" name="answer" value="d"> чувство собственного достоинства</label><br><br>
+      <button type="submit">Отправить ответ</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const resultDiv = document.getElementById('result');
+      if (!selected) {
+        resultDiv.textContent = "Пожалуйста, выбери ответ.";
+        return;
+      }
+      if (selected.value === 'b') {
+        resultDiv.innerHTML = `<span style="color: #2ecc71;">Верно! У тебя осталось 2 друга.</span><br>
+          Следующая точка: 52.2297, 21.0122<br>
+          Сканируй QR-код или иди по координатам!`;
+      } else {
+        resultDiv.innerHTML = `<span style="color: #e74c3c;">Неверно. Попробуй ещё раз.</span>`;
+      }
+    });
+  </script>
+</body>
+</html>
